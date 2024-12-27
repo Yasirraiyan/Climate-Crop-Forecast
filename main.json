@@ -1,0 +1,102 @@
+{
+  "import numpy as np": "",
+  "import matplotlib.pyplot as plt": "",
+  "from scipy import stats": "",
+  "data": {
+    "temperature": [20, 22, 23, 21, 25, 27, 30, 32, 29, 24],
+    "rainfall": [200, 220, 210, 190, 250, 300, 310, 280, 270, 230],
+    "humidity": [60, 65, 70, 55, 75, 80, 85, 90, 78, 68],
+    "crop_yield": [2.5, 2.7, 2.8, 2.6, 3.0, 3.5, 3.6, 3.3, 3.1, 2.9]
+  },
+  "regression": {
+    "temperature": {
+      "slope": "stats.linregress(temperature, crop_yield)[0]",
+      "intercept": "stats.linregress(temperature, crop_yield)[1]",
+      "r_value": "stats.linregress(temperature, crop_yield)[2]",
+      "p_value": "stats.linregress(temperature, crop_yield)[3]",
+      "std_err": "stats.linregress(temperature, crop_yield)[4]"
+    },
+    "rainfall": {
+      "slope": "stats.linregress(rainfall, crop_yield)[0]",
+      "intercept": "stats.linregress(rainfall, crop_yield)[1]",
+      "r_value": "stats.linregress(rainfall, crop_yield)[2]",
+      "p_value": "stats.linregress(rainfall, crop_yield)[3]",
+      "std_err": "stats.linregress(rainfall, crop_yield)[4]"
+    },
+    "humidity": {
+      "slope": "stats.linregress(humidity, crop_yield)[0]",
+      "intercept": "stats.linregress(humidity, crop_yield)[1]",
+      "r_value": "stats.linregress(humidity, crop_yield)[2]",
+      "p_value": "stats.linregress(humidity, crop_yield)[3]",
+      "std_err": "stats.linregress(humidity, crop_yield)[4]"
+    }
+  },
+  "models": {
+    "predict_yield_temp": "def predict_yield_temp(temp): return slope_temp * temp + intercept_temp",
+    "predict_yield_rain": "def predict_yield_rain(rain): return slope_rain * rain + intercept_rain",
+    "predict_yield_hum": "def predict_yield_hum(hum): return slope_hum * hum + intercept_hum"
+  },
+  "predictions": {
+    "temp_pred": "predict_yield_temp(28)",
+    "rain_pred": "predict_yield_rain(250)",
+    "hum_pred": "predict_yield_hum(80)"
+  },
+  "print_predictions": [
+    "print(f\"Prediction for temperature 28°C: {temp_pred} tons/hectare\")",
+    "print(f\"Prediction for rainfall 250mm: {rain_pred} tons/hectare\")",
+    "print(f\"Prediction for humidity 80%: {hum_pred} tons/hectare\")"
+  ],
+  "plots": [
+    {
+      "title": "Temperature vs Crop Yield",
+      "x_label": "Temperature (°C)",
+      "y_label": "Crop Yield (tons/hectare)",
+      "scatter_data": {
+        "x": "temperature",
+        "y": "crop_yield",
+        "color": "blue",
+        "label": "Actual Data (Temperature)"
+      },
+      "line_data": {
+        "x": "temperature",
+        "y": "[predict_yield_temp(t) for t in temperature]",
+        "color": "green",
+        "label": "Regression Line (Temperature)"
+      }
+    },
+    {
+      "title": "Rainfall vs Crop Yield",
+      "x_label": "Rainfall (mm)",
+      "y_label": "Crop Yield (tons/hectare)",
+      "scatter_data": {
+        "x": "rainfall",
+        "y": "crop_yield",
+        "color": "blue",
+        "label": "Actual Data (Rainfall)"
+      },
+      "line_data": {
+        "x": "rainfall",
+        "y": "[predict_yield_rain(r) for r in rainfall]",
+        "color": "green",
+        "label": "Regression Line (Rainfall)"
+      }
+    },
+    {
+      "title": "Humidity vs Crop Yield",
+      "x_label": "Humidity (%)",
+      "y_label": "Crop Yield (tons/hectare)",
+      "scatter_data": {
+        "x": "humidity",
+        "y": "crop_yield",
+        "color": "blue",
+        "label": "Actual Data (Humidity)"
+      },
+      "line_data": {
+        "x": "humidity",
+        "y": "[predict_yield_hum(h) for h in humidity]",
+        "color": "green",
+        "label": "Regression Line (Humidity)"
+      }
+    }
+  ]
+}
