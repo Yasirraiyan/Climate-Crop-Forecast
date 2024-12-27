@@ -1,0 +1,6 @@
+temp_pred = predict_yield_temp(28) 
+rain_pred = predict_yield_rain(250)
+hum_pred = predict_yield_hum(80) 
+print(f"Prediction for temperature 28°C: {temp_pred} tons/hectare") 
+print(f"Prediction for rainfall 250mm: {rain_pred} tons/hectare") 
+print(f"Prediction for humidity 80%: {hum_pred} tons/hectare")
